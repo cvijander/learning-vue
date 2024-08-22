@@ -9,12 +9,17 @@
 </head>
 <body>
     <div id="app">
-          <h1>Deck Name</h1>
+          <h1 v-text="deskName"></h1>
+
+          <div class="user-input">
+            Type something:<input type="text" v-model="userInput"> 
+          </div>
 
           <div class="card">
-            <h2>Item</h2>
-            <div>Description</div>
+            <h2 v-text="userInput =='flip' ? '': cards[0].front "></h2>
+            <div v-html="userInput=='flip' ? cards[0].back : '' "></div>
           </div>
+          <a :href="readMoreUrl">read more</a>
     </div>
 
     <script src="data.js"></script>
