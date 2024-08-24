@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Flash card app</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Flash card game</title>
 </head>
 <body>
-    <div id="app">
-          <h1 v-text="deskName"></h1>
+  <div id="direct">
+      {{ name}}
+  </div>
+  <div id="app">      
+      <h1 v-text="deskName"></h1>
 
-          <div class="user-input">
-            Type something:<input type="text" v-model="userInput"> 
-          </div>
+       <!-- <div class="user-input">
+        Type something <input type="text" v-model="userInput">
+       </div> -->
 
-          <div class="card">
-            <h2 v-text="userInput =='flip' ? '': cards[0].front "></h2>
-            <div v-html="userInput=='flip' ? cards[0].back : '' "></div>
-          </div>
-          <a :href="readMoreUrl">read more</a>
-    </div>
+      <div @click="flippedMe" class="card">
+         <h2 v-show="!flipped" v-text="front" ></h2>  
+         <div v-show="flipped"  v-html="back" ></div>
+     </div>
 
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+     <div class="navigation">
+      <button type="button" @click="move(-1)">&#8592</button>
+      <button type="button" @click="move(1)">&#8594</button>
+     </div>
+     
+          <a :href="readMoreUrl">Read more</a>
+
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

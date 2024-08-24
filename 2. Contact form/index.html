@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact form</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div id="#first">
+
+    </div> -->
+    <div id ="app">
+        <h1 v-text="deskName"></h1>
+
+        <form method="post" action="">
+            <div>
+                <label for="name">Name: </label>
+                <input v-model.trim="deskName" type="text" id="name" name="name"> ( {{ deskName.length }} characters)
+            </div>
+
+            <div>
+                <label for="description">Description: </label>
+                <textarea v-model="deskDescription"  id="description" name="description"></textarea>
+                ( {{ charsLeft }} left )
+            </div>
+
+            <div class="options">
+               <div>
+                    <input v-model="options"     type="checkbox" id="reverse" value="reverse">
+                    <label for="reverse">Include reverse cards</label>
+               </div>
+               <!-- true-value="on" false-value="off" -->
+
+               <div>
+                    <input v-model="options" type="checkbox" id="time_limit" value="time_limit">
+                    <label for="time_limit">Use time limits</label>
+               </div>
+
+               <div>
+                    <input v-model="options" type="checkbox" id="reminders" value="reminders">
+                    <label for="reminders">Enable reminders</label>
+               </div>
+
+               <fieldset class="leech-action">
+                <legend>Leech action</legend>
+                <div>
+                    <input v-model="leech" type="radio" id="tag" name="leech" value="tag">
+                    <label for="tag">tag</label>
+                </div>
+                <div>
+                    <input v-model="leech" type="radio" id="suspend" name="leech" value="suspend">
+                    <label for="suspend">suspend</label>
+                </div>
+               </fieldset>               
+            </div>
+
+            <div class="category">
+                <label for="category">Category:</label>
+                <select v-model.number="categoryId"  name="category" id="category">
+                   <option value="">Select something...</option>
+                   <option value="1">Foreigh language</option>
+                   <option value="2">Html language</option>
+                   <option value="3">Css language</option>
+                </select>
+            </div>
+
+
+
+            
+
+            <button @click="submit" type="submit">Create</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
