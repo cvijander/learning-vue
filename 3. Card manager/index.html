@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Card App</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1 >{{ title }}</h1>
+
+        <div :style="textSizeControl">
+            Text size : <span @click="fontSize++">bigger</span> | <span @click="fontSize--">smaller</span>
+        </div>
+        <div :style="{'font-size' : + fontSize + 'px'}">
+            <div v-for="(card, index) in cards" class="card-pair">
+                <div v-if="editIndex == index" class="card">
+                    <textarea @keydown.enter="editIndex = -1" v-model="card.front"></textarea>
+                </div>
+                <div v-else @click="editIndex = index" class="card" v-text="card.front"></div>
+                <div class="card" v-html="card.back"></div>
+            </div>
+        </div>
+
+
+
+
+        <script src="data.js"></script>
+        <script src="app.js"></script>
+    </div>
+</body>
+</html>

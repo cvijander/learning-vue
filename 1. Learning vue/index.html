@@ -8,9 +8,9 @@
   <title>Flash card game</title>
 </head>
 <body>
-  <div id="direct">
+  <!-- <div id="direct">
       {{ name}}
-  </div>
+  </div> -->
   <div id="app">      
       <h1 v-text="deskName"></h1>
 
@@ -18,17 +18,25 @@
         Type something <input type="text" v-model="userInput">
        </div> -->
 
-      <div @click="flippedMe" class="card">
-         <h2 v-show="!flipped" v-text="front" ></h2>  
-         <div v-show="flipped"  v-html="back" ></div>
-     </div>
+      <flash-card
+          @flip="flipped = !flipped"
+          @yes="gotIt"
+          @no="again" 
+          :flipped="flipped"
+          :isRepeat="isRepeat"
+          :front="front"
+          :back="back"
+      >
+      </flash-card>
+      
 
      <div class="navigation">
       <button type="button" @click="move(-1)">&#8592</button>
       <button type="button" @click="move(1)">&#8594</button>
      </div>
      
-          <a :href="readMoreUrl">Read more</a>
+          
+      <read-more :url="readMoreUrl"></read-more>
 
   </div>
 
